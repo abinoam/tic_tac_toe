@@ -28,17 +28,16 @@ class TTTBoard
     @board[x-1][y-1]=value
   end
 
-  def each_line
-    each_for @board
+  def each_line(&block)
+    each_for @board, &block
   end
 
-  def each_column
+  def each_column(&block)
     cols = @board.transpose
-
-    each_for cols
+    each_for cols, &block
   end
 
-  def each_diagonal
+  def each_diagonal(&block)
     diags_coords = [[[1,1], [2,2], [3,3]],
                    [[1,3], [2,2], [3,1]]]
     diags = diags_coords.map do |diag_coords|
