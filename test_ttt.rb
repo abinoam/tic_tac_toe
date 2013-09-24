@@ -25,4 +25,10 @@ class TestTTT < MiniTest::Unit::TestCase
       @tttboard[4,1]
     end
   end
+  
+  def test_that_it_will_throw_an_error_with_non_valid_value
+    assert_raises ArgumentError do
+      @tttboard[1,1]="non-valid value"
+    end
+  end
 end
