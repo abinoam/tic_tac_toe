@@ -59,6 +59,18 @@ class TTTBoard
     end
   end
 
+  def game_winner?
+    each_triplet.each do |triplet|
+      wt = winner_triplet?(triplet)
+      return wt if wt
+    end
+    nil
+  end
+
+  def winner_triplet?(triplet)
+    triplet.uniq.size == 1 and triplet[0]
+  end
+
   def to_s
     "\n" +
     self.each_line.with_index.map do |line, l_ix|
