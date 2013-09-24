@@ -33,12 +33,7 @@ class TTTBoard
   end
 
   def each_column
-    cols =
-    (1..3).map do |c|
-      (1..3).map do |l|
-         self[l,c]
-      end
-    end
+    cols = @board.transpose
 
     each_for cols
   end
