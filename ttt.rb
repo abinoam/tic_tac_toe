@@ -31,11 +31,7 @@ class TTTBoard
   end
 
   def each_line
-    if block_given?
-      @board.each { |line| yield line }
-    else
-      @board.each
-    end
+    each_for @board
   end
 
   def each_column
@@ -46,11 +42,7 @@ class TTTBoard
       end
     end
 
-    if block_given?
-      cols.each { |col| yield col }
-    else
-      cols.each
-    end
+    each_for cols
   end
 
   def each_diagonal
@@ -62,10 +54,16 @@ class TTTBoard
       end
     end
 
+    each_for diags
+  end
+
+  private
+
+  def each_for(elements)
     if block_given?
-      diags.each { |diag| yield diag }
+      elements.each { |element| yield element }
     else
-      diags.each
+      elements.each
     end
   end
 end
