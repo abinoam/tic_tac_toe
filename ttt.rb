@@ -4,10 +4,17 @@
 
 # First thing we need is a board
 class TTTBoard
-  def initialize
+  def initialize(board=nil)
     @board = [[nil, nil, nil],
               [nil, nil, nil],
               [nil, nil, nil]]
+    if board
+      board.each_with_index do |line, l_ix|
+        line.each_with_index do |cell, c_ix|
+          self[l_ix+1, c_ix+1] = cell
+        end
+      end
+    end
   end
 
   def [](x,y)
