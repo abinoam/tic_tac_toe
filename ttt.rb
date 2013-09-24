@@ -46,7 +46,17 @@ class TTTBoard
       end
     end
 
-    each_for diags
+    each_for diags, &block
+  end
+
+  def each_triplet(&block)
+    if block
+      each_line(&block)
+      each_column(&block)
+      each_diagonal(&block)
+    else
+     (each_line.to_a + each_column.to_a + each_diagonal.to_a).to_enum
+    end
   end
 
   def to_s
