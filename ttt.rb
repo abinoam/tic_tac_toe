@@ -24,7 +24,7 @@ class TTTBoard
 
   def []=(x,y, value)
     validate_coords(x,y)
-    raise ArgumentError, "value should be 'X' or 'O' or nil but it is #{value}" unless ['X', 'O', nil].include?(value)
+    validate_value(value)
     @board[x-1][y-1]=value
   end
 
@@ -68,5 +68,9 @@ class TTTBoard
   def validate_coords(x,y)
     raise ArgumentError, "x should fall under the 1-3 limit but it is #{x}" unless (1..3).include?(x)
     raise ArgumentError, "y should fall under the 1-3 limit but it is #{y}" unless (1..3).include?(y)
+  end
+
+  def validate_value(value)
+    raise ArgumentError, "value should be 'X' or 'O' or nil but it is #{value}" unless ['X', 'O', nil].include?(value)
   end
 end
