@@ -55,6 +55,17 @@ class TTTBoard
     each_for diags
   end
 
+  def to_s
+    "\n" +
+    self.each_line.with_index.map do |line, l_ix|
+       l = line.map {|e| e.nil? ? " " : e }
+       "=============\n" +
+       "| #{l[0]} | #{l[1]} | #{l[2]} | #{l_ix+1}\n"
+    end.join +
+    "=============\n" +
+    "  1   2   3   \n"
+  end
+
   private
 
   def each_for(elements)

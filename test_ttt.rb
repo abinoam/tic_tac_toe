@@ -25,10 +25,24 @@ class TestTTT < MiniTest::Unit::TestCase
       @tttboard[4,1]
     end
   end
-  
+
   def test_that_it_will_throw_an_error_with_non_valid_value
     assert_raises ArgumentError do
       @tttboard[1,1]="non-valid value"
     end
+  end
+
+  def test_that_to_s_renders_board_correctly
+    control_board =
+      "\n" +
+      "=============\n"   +
+      "| X | X | X | 1\n" +
+      "=============\n"   +
+      "| O | O | O | 2\n" +
+      "=============\n"   +
+      "|   |   |   | 3\n" +
+      "=============\n"   +
+      "  1   2   3   \n"
+    assert_equal control_board, @tttboard.to_s
   end
 end
