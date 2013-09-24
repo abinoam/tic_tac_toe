@@ -1,4 +1,4 @@
-#!/usr/bin/env
+#!/usr/bin/env ruby
 
 # TTT is TicTacToe Game
 
@@ -157,3 +157,5 @@ class TTTGame
     @board[lin, col] = "O"
   end
 end
+
+TTTGame.new.game_play
