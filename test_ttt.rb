@@ -12,6 +12,10 @@ class TestTTT < MiniTest::Unit::TestCase
     assert_equal @tttboard.instance_variable_get(:@board), @tttboard.each_line.to_a
   end
 
+  def test_each_line_iterator_without_a_block_should_return_an_enum
+    assert_equal Enumerator, @tttboard.each_line.class
+  end
+
   def test_each_column_iterator
     assert_equal [["X", "O", nil], ["X", "O", nil], ["X", "O", nil]], @tttboard.each_column.to_a
   end
