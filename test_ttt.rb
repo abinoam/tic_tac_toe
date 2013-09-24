@@ -19,4 +19,10 @@ class TestTTT < MiniTest::Unit::TestCase
   def test_each_diagonal_iterator
     assert_equal [["X", "O", nil], ["X", "O", nil]], @tttboard.each_diagonal.to_a
   end
+
+  def test_that_it_will_throw_an_error_with_wrong_coords
+    assert_raises ArgumentError do
+      @tttboard[4,1]
+    end
+  end
 end
