@@ -16,6 +16,12 @@ class TestTTT < MiniTest::Unit::TestCase
     assert_equal Enumerator, @tttboard.each_line.class
   end
 
+  def test_that_each_line_iterator_really_iterates
+    line = []
+    @tttboard.each_line { |l| line = l }
+    assert_equal [nil, nil, nil], line # Equals last line (from last iteration)
+  end
+
   def test_each_column_iterator
     assert_equal [["X", "O", nil], ["X", "O", nil], ["X", "O", nil]], @tttboard.each_column.to_a
   end
