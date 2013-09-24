@@ -45,4 +45,20 @@ class TTTBoard
       cols.each
     end
   end
+
+  def each_diagonal
+    diags_coords = [[[1,1], [2,2], [3,3]],
+                   [[1,3], [2,2], [3,1]]]
+    diags = diags_coords.map do |diag_coords|
+      diag_coords.map do |l, c|
+        self[l,c]
+      end
+    end
+
+    if block_given?
+      diags.each { |diag| yield diag }
+    else
+      diags.each
+    end
+  end
 end
