@@ -22,4 +22,12 @@ class TTTBoard
     raise ArgumentError, "value should be 'X' or 'O' or nil but it is #{value}" unless ['X', 'O', nil].include?(value)
     @board[x-1][y-1]=value
   end
+
+  def each_line
+    if block_given?
+      @board.each { |line| yield line }
+    else
+      @board.each
+    end
+  end
 end
