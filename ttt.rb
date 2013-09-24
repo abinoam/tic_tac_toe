@@ -30,4 +30,19 @@ class TTTBoard
       @board.each
     end
   end
+
+  def each_column
+    cols =
+    (1..3).map do |c|
+      (1..3).map do |l|
+         self[l,c]
+      end
+    end
+
+    if block_given?
+      cols.each { |col| yield col }
+    else
+      cols.each
+    end
+  end
 end
